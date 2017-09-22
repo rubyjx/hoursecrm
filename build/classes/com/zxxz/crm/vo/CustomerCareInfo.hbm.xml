@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-12 13:23:07 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.CustomerCareInfo" table="CUSTOMER_CARE">
+    	<!-- 配置主键自增长 -->
+    	<id name="careId" column="care_Id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="customerId" column="customer_Id"/>
+    	<property name="careTheme" column="care_Theme" />
+    	<property name="careWay" column="care_Way" />
+    	<property name="careTime" column="care_Time" />
+    	<property name="careRemark" column="care_Remark" />
+    	<property name="careNexttime" column="care_Nexttime" />
+    	<property name="carePeople" column="care_People" />
+    	<property name="isUsed" column="is_Used" />
+    	<!-- 多个关心对应1个客户 -->
+    	<many-to-one name="customerInfo" insert="false" update="false" column="customer_id" cascade="save-update" 
+    	class="com.zxxz.crm.vo.CustomerInfo"></many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+   <!-- action创建和注入交给spring进行管理，所以applicationContext也无需配置bean -->
+   <constant name="struts.objectFactory" value="spring" />
+   <package name="default" namespace="/" extends="struts-default">
+         <!-- 配置user业务aciton -->
+        <global-results>
+             <result name="error">error.jsp</result>
+        </global-results>
+        <action name="user_*" class="userAction" method="{1}">  
+            <result name="success" type="redirect">/view/frame/main.jsp</result>
+            <result name="login">/login.jsp</result>
+            <result name="preupdate">/view/user/user_update.jsp</result>
+            <result name="center">/view/frame/center.jsp</result>
+            <result name="userlist">/view/user/user_list.jsp</result>
+            <result name="more">/view/user/user_more.jsp</result>
+            <result name="save">/view/user/user_save.jsp</result>
+            <allowed-methods>queryMore,delete,checkLogin,update,cancelUser,mainMenu,findAllUser,customerAllocation</allowed-methods>                
+		</action>
+		<!-- 配置客户信息的action -->
+		<action name="customer_*" class="customerAction" method="{1}">
+			<result name="customerlist">/view/customer/customer_list.jsp</result>
+			<result name="preUpdateCustomer">/view/customer/customer_update.jsp</result>
+			<result name="dataCustomer">/view/customer/customer_more.jsp</result>
+			<result name="updateCustomerPosition">/view/customer/customer_save.jsp</result>
+			<result name="preAddCustomer">/view/customer/customer_add.jsp</result>
+			<!-- 客户分配 -->
+			<result name="customerallocation">/view/customer/customer_admeasure.jsp</result>
+			<result name="customerdivideall">/view/customer/customer_allAdmeasure_update.jsp
+			</result>
+			<result name="customerdivide">/view/customer/customer_admeasure_update.jsp
+			</result>
+			<result name="customerdividemsg">/view/customer/customer_admeasure_save.jsp
+			</result>
+			<!-- 客户关心返回页面 -->
+
+			<allowed-methods>dataOfCustomer,updateCustomer,
+				customerData,deleteCustomer,allNeedData,addCustomer,
+				customerAllocation,customerDivide,customerDivideUpdate,
+				customerCareList,deleteCustomerCare,updateCustomerCare</allowed-methods>
+		</action>
+
+		<action name="customercare_*" class="customerCareAction" method="{1}">
+			<result name="customercaremsg">/view/customerCare/customerCare_save.jsp</result>
+			<result name="customercarelist">/view/customerCare/customerCare_list.jsp</result>
+            <result name="customercareupdate">/view/customerCare/customerCare_update.jsp</result>
+            <result name="customercareadd">/view/customerCare/customerCare_add.jsp</result>
+            <allowed-methods>customerCareList,deleteCustomerCare,updateCustomerCare,addCusotmerCare</allowed-methods>
+		</action>
+
+		<!-- noticeacition信息 -->
+		<action name="notice_*" class="noticeAction" method="{1}">
+			<result name="noticelist">/view/notice/notice_list.jsp</result>
+			<allowed-methods>noticeList</allowed-methods>
+		</action>
+	</package>
+</struts>

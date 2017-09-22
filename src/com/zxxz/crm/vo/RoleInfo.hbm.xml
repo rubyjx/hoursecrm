@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-11 11:15:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.RoleInfo" table="user_role">
+        <id name="roleId" type="int">
+            <column name="ROLE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="roleName" type="java.lang.String">
+            <column name="ROLE_NAME" />
+        </property>
+        <property name="rolePower" type="java.lang.String">
+            <column name="ROLE_POWER" />
+        </property>
+        <property name="isUsed" type="java.lang.String">
+            <column name="IS_USED" />
+        </property>
+        
+        <!-- 定义被约束的外键关联 -->
+        <set name="userSet" table="user_info" inverse="true">
+        	<key column="ROLE_ID"></key>
+        	<one-to-many class="com.zxxz.crm.vo.UserInfo"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

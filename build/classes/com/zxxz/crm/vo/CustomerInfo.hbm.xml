@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zxxz.crm.vo.CustomerInfo" table="customer_info">
+	     <!-- 主键映射 -->
+		<id name="customerId" column="customer_Id">
+		    <!-- 主键生成策略 -->
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="conditionId" column="condition_Id"></property>
+		<property name="typeId" column="type_Id"></property>
+		<property name="userId" column="user_Id"></property>
+		<property name="sourceId" column="source_Id"></property>
+		<property name="customerName" column="customer_Name"></property>
+		<property name="customerSex" column="customer_Sex"></property>
+		<property name="customerMobile" column="customer_Mobile"></property>
+		<property name="customerQq" column="customer_Qq"></property>
+		<property name="customerAddress" column="customer_Address"></property>
+		<property name="customerEmail" column="customer_Email"></property>
+		<property name="customerRemark" column="customer_Remark"></property>
+		<property name="customerJob" column="customer_Job"></property>
+		<property name="customerBlog" column="customer_Blog"></property>
+		<property name="customerTel" column="customer_Tel"></property>
+	    <property name="customerMsn" column="customer_Msn"></property>
+		<property name="customerBirthday" column="Birth_day"></property>
+		<property name="customerAddTime" column="customer_AddTime"></property>
+		<property name="customerAddMan" column="customer_AddMan"></property>
+	    <property name="customerChangeTime" column="customer_ChangeTime"></property>
+	    <property name="customerChangeMan" column="change_man"></property>
+		<property name="customerCompany" column="customer_Company"></property>
+		<property name="isUsed" column="is_Used"></property>
+	    <!--  一个顾客对应多个关心信息 -->
+	   
+	</class>
+	
+
+</hibernate-mapping>

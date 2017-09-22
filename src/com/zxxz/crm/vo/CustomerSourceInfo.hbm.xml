@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-11 11:15:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.CustomerSourceInfo" table="Customer_Source">
+    	<id name="sourceId" column="source_Id">
+    		<generator class="native"/>
+    	</id>
+    	<property name="sourceName" column="source_Name"/>
+    	<property name="sourceIsUsed" column="Is_Used"/>
+    </class>
+</hibernate-mapping>

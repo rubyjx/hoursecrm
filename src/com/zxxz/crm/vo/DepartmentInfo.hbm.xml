@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-12 13:23:07 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.DepartmentInfo" table="Department_Info">
+    	<id name="departmentId" column="department_Id">
+    		<generator class="native"/>
+    	</id>
+    	<property name="departmentName" column="department_Name"/>
+    	<property name="departmentDesc" column="department_Desc"/>
+    	<property name="isUsed" column="is_Used"/>
+    	
+    	<!-- 定义外键约束配置 -->
+    	<set name="userInfoSet" table="department_info" inverse="true">
+    		<key column="department_id"></key>
+    		<one-to-many class="com.zxxz.crm.vo.UserInfo"/>
+    	</set>
+    	
+    </class>
+</hibernate-mapping>

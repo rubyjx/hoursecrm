@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-11 11:15:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.LinkRecordInfo" table="customer_linkreord">
+    	<!-- 定义主键 -->
+		<id name="recordId" column="record_Id">
+			<generator class="native"></generator>
+		</id>
+		<property name="customerId" column="customer_Id"/>
+		<property name="linkTime" column="link_Time"/>
+		<property name="whoLink" column="who_Link"/>
+		<property name="linkType" column="link_Type"/>
+		<property name="linkTheme" column="link_Theme"/>
+		<property name="linkNexttime" column="link_Nexttime"/>
+		<property name="linkRemark" column="link_Remark"/>
+		<property name="isUsed" column="is_Used"/>
+    
+    </class>
+    
+</hibernate-mapping>

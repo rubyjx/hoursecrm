@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-12 13:23:07 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.CustomerConditionInfo" table="customer_condition">
+    	<id name="conditionId" column="condition_Id">
+    		<generator class="native"></generator>
+    	</id>
+    	<property name="conditionName" column="condition_Name" />
+    	<property name="conditionExplain" column="condition_Explain" />
+    	<property name="conditionIsUsed" column="is_used" />
+    	
+    </class>
+</hibernate-mapping>

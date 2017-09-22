@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zxxz.crm.vo.UserInfo" table="user_info">
+	     <!-- 主键映射 -->
+		<id name="userId" column="user_Id">
+		    <!-- 主键生成策略 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="userName" column="user_Name"></property>
+		<property name="userSex" column="user_Sex"></property>
+		<property name="userAge" column="user_Age"></property>
+		<property name="departmentId" column="department_Id"></property>
+		<property name="roleId" column="role_Id"></property>
+		<property name="userMobile" column="user_Mobile"></property>
+		<property name="userTel" column="user_Tel"></property>
+		<property name="userIdnum" column="user_Idnum"></property>
+		<property name="userEmail" column="user_Email"></property>
+		<property name="userAddress" column="user_Address"></property>
+		<property name="userAddtime" column="user_Addtime"></property>
+		<property name="userAddman" column="user_Addman"></property>
+		<property name="userChangetime" column="user_Changetime"></property>
+		<property name="userChangeman" column="user_Changeman"></property>
+		<property name="userIntest" column="user_Intest"></property>
+	    <property name="userDiploma" column="user_Diploma"></property>
+		<property name="userBankcard" column="user_Bankcard"></property>
+		<property name="userNation" column="user_Nation"></property>
+		<property name="isMarried" column="is_Married"></property>
+	    <property name="userNum" column="user_Num"></property>
+		<property name="userPw" column="user_Pw"></property>
+		<property name="isUsed" column="is_Used"></property>
+	    <!-- 一对多关系 -->
+	 <!--    <set name="customerList" inverse="false">
+	       <key  column="userId" ></key>
+	       <one-to-many class="com.zxxz.crm.vo.CustomerInfo"/>
+	    </set>  -->
+	    
+	   <many-to-one name="roleInfo" class="com.zxxz.crm.vo.RoleInfo" column="role_Id" cascade="save-update" insert="false" update="false"></many-to-one>
+	   
+	   <many-to-one name="departmentInfo" class="com.zxxz.crm.vo.DepartmentInfo" column="department_Id" cascade="save-update" insert="false" update="false"></many-to-one>
+	   
+	</class>
+     
+</hibernate-mapping>

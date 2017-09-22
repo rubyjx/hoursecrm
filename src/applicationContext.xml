@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+
+	<!-- 配置数据源c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="user" value="root"/>
+		<property name="password" value="123456"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/managecrm"/>
+	</bean>
+	<!-- 配置sessionFactory -->
+	<bean id="sessionFactory"
+	class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<!-- 显示sql语句 -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<!-- 映射关系文件 -->
+		<!-- mappingLocations更加简单方便可以使用通配符 -->
+
+		<property name="mappingLocations" value="classpath:com/zxxz/crm/vo/*.hbm.xml"></property>
+
+	</bean>
+	<!-- 配置hibernateTemplate模板 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<!-- user业务层 -->
+	
+	
+	<!-- 配置useraction -->
+	<bean id="userAction" class="com.zxxz.crm.action.UserAction" scope="prototype">
+		<!-- 依赖注入userService -->
+		<property name="userService" ref="userService"></property>
+		<property name="departmentService" ref="departmentService"></property>
+		<property name="roleService" ref="roleService"></property>
+	</bean>
+	<!-- 配置userService -->
+	<bean id="userService" class="com.zxxz.crm.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<!-- 配置userbean -->
+	<bean id="userDao" class="com.zxxz.crm.dao.impl.UserDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	<!-- customer业务层 -->
+	
+	<!-- 配置customerAction的创建 -->
+	<bean id="customerAction" class="com.zxxz.crm.action.CustomerAction">
+	    <property name="customerService" ref="customerService"></property>
+	</bean>
+	<!-- 配置customerservice的创建 -->
+	<bean id="customerService" class="com.zxxz.crm.service.impl.CustomerServiceImpl">
+	     <property name="customerDao" ref="customerDao"></property>
+	</bean>
+	<!-- 配置customerDao的创建 -->
+	<bean id="customerDao" class="com.zxxz.crm.dao.impl.CustomerDaoImpl">
+	      <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	<!-- notice层 -->
+	<bean id="noticeAction" class="com.zxxz.crm.action.NoticeAction">
+	   
+	</bean>
+	<!-- noticeService -->
+	<bean id="noticeService" class="com.zxxz.crm.service.impl.NoticeServiceImpl"></bean>
+	
+	<!-- noticeDao -->
+	<bean id="noticeDao" class="com.zxxz.crm.dao.impl.NoticeDaoImpl">
+	        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	
+	<!-- 配置customerConditiondao层配置 -->
+	<bean id="customerConditionDao" class="com.zxxz.crm.dao.impl.CustomerConditionDaoImpl">
+	     <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<!-- 配置customerSourcedao -->
+	<bean id="customerSourceDao" class="com.zxxz.crm.dao.impl.CustomerSourceDaoImpl">
+	     <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<!-- 配置customerTypeDao -->
+	<bean id="customerTypeDao" class="com.zxxz.crm.dao.impl.CustomerTypeDaoImpl">
+	     <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	<!-- 配置departmentDao -->
+	<bean id="departmentDao" class="com.zxxz.crm.dao.impl.DepartmentDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!-- 配置departmentService -->
+	<bean id="departmentService" class="com.zxxz.crm.service.impl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"></property>
+	</bean>
+
+	<!-- 配置customerCareDao -->
+	<bean id="customerCareDao" class="com.zxxz.crm.dao.impl.CustomerCareDaoImpl">
+	    <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<!-- customerCareAction配置 -->
+	<bean id="customerCareAction" class="com.zxxz.crm.action.CustomerCareAction"></bean>
+	<!-- customerCareService配置 -->
+	<bean id="customerCareService" class="com.zxxz.crm.service.impl.CustomerCareServiceImpl"></bean>
+	
+	<!-- 配置roleInfoDao -->
+	<bean id="roleDao" class="com.zxxz.crm.dao.impl.RoleDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!-- 配置roleService -->
+	<bean id="roleService" class="com.zxxz.crm.service.impl.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao"></property>
+	</bean>
+	
+	
+	<!-- 配置平台事物管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 扫描代码中的事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- 扫描ioc注解 -->
+	<context:component-scan base-package="com.zxxz.crm.*.impl"/>
+</beans>
