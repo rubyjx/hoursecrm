@@ -23,7 +23,7 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/CustomerSourceAddServlet"   name="form3" onsubmit="return checkForm('form3');" method="post"    >
+		<form action="<%=basePath%>customerSource_addSource"   name="form3" onsubmit="return checkForm('form3');" method="post"    >
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>

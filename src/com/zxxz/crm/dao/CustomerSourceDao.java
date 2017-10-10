@@ -15,5 +15,8 @@ public interface CustomerSourceDao {
      * @return
      */
 	List<CustomerSourceInfo> findAllSource();
+	List<CustomerSourceInfo> findCustomerSouceBySourceName(String sourceName);
+	void deleteSouce(CustomerSourceInfo findCustomerSourceInfoBySourceId);
+	void addSouce(CustomerSourceInfo customerSourceInfo);
 
 }

@@ -23,8 +23,25 @@ public class CustomerSourceDaoImpl extends HibernateDaoSupport  implements Custo
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CustomerSourceInfo> findAllSource() {
-		List<CustomerSourceInfo> find = (List<CustomerSourceInfo>) this.getHibernateTemplate().find("from CustomerSourceInfo");
+		List<CustomerSourceInfo> find = (List<CustomerSourceInfo>) this.getHibernateTemplate().find("from CustomerSourceInfo where sourceIsUsed =1");
 		return find;
+	}
+	//根据条件查询顾客来源
+	@Override
+	public List<CustomerSourceInfo> findCustomerSouceBySourceName(String sourceName) {
+        String hql="from CustomerSourceInfo where sourceIsUsed =1 and sourceName like ?";
+		List<CustomerSourceInfo> find = (List<CustomerSourceInfo>) this.getHibernateTemplate().find(hql, "%"+sourceName+"%");
+		return find;
+	}
+	//修改顾客信息
+	@Override
+	public void deleteSouce(CustomerSourceInfo findCustomerSourceInfoBySourceId) {
+		this.getHibernateTemplate().update(findCustomerSourceInfoBySourceId);
+	}
+	//添加顾客来源
+	@Override
+	public void addSouce(CustomerSourceInfo customerSourceInfo) {
+		this.getHibernateTemplate().save(customerSourceInfo);
 	}
 	
 	

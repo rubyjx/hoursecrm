@@ -206,8 +206,8 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																				<td height="20" style="cursor: hand"
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
-																					<span class="STYLE3"> <a
-																						href="#" target="mainFrame">客户类型</a>
+																					<span class="STYLE3"> 
+																					<a href="${pageContext.request.contextPath}/customerType_typeList" target="mainFrame">客户类型</a>
 																					</span>
 																				</td>
 																			</tr>
@@ -228,8 +228,8 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																				<td height="20" style="cursor: hand"
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
-																					<span class="STYLE3"> <a
-																						href="#"
+																					<span class="STYLE3">
+																					 <a href="${pageContext.request.contextPath}/customerCondition_conditionList"
 																						target="mainFrame">客户状态</a> </span>
 																				</td>
 																			</tr>
@@ -251,7 +251,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"> <a
-																						href="#" target="mainFrame">客户来源</a>
+																						href="${pageContext.request.contextPath }/customerSource_sourceList" target="mainFrame">客户来源</a>
 																					</span>
 																				</td>
 																			</tr>

@@ -23,7 +23,7 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/CustomerConditionAddServlet"  name="form2" onsubmit="return checkForm('form2');" method="post" >
+		<form action="<%=basePath%>customerCondition_addCondition"  name="form2" onsubmit="return checkForm('form2');" method="post" >
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>

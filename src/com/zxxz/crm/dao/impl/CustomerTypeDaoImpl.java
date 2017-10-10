@@ -25,8 +25,26 @@ public class CustomerTypeDaoImpl extends HibernateDaoSupport implements Customer
 	public List<CustomerTypeInfo> findAllType() {
 		@SuppressWarnings("unchecked")
 		List<CustomerTypeInfo> find = (List<CustomerTypeInfo>) this.getHibernateTemplate()
-				.find("from CustomerTypeInfo");
+				.find("from CustomerTypeInfo where customerTypeIsUsed=1");
 		return find;
+	}
+
+	@Override
+	public List<CustomerTypeInfo> findCustomerTypeByTypeName(String typeName) {
+		String hql="from CustomerTypeInfo  where customerTypeName like ?";
+	    List<CustomerTypeInfo> find = (List<CustomerTypeInfo>) this.getHibernateTemplate().find(hql, "%"+typeName+"%");
+		return find;
+	}
+
+	@Override
+	public void deleteType(CustomerTypeInfo customerType) {
+		this.getHibernateTemplate().update(customerType);	
+	}
+
+	@Override
+	public void addType(CustomerTypeInfo customerType) {
+		this.getHibernateTemplate().save(customerType);
+		
 	}
    
 

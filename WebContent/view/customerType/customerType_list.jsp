@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*,com.zxxz.crm.vo.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -112,9 +113,9 @@ for(i=0;i<cs.length;i++){
 	<body>
 	
 	<%
-						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo2");
+						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo");
 			 %>
-	<form action="<%=basePath%>servlet/CustomerTypeQueryServlet"  method="post">
+	<form action="<%=basePath%>customerType_queryType"  method="post">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td height="30" background="<%=basePath%>resource/images/tab_05.gif">
@@ -178,7 +179,8 @@ for(i=0;i<cs.length;i++){
 												<span class="STYLE1">客户类型</span>
 											</div>
 										</td>
-										<td   <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>  width="10%"
+										
+										<td    <c:if test="${userinfo.roleId eq '3' and userinfo.roleId eq '4'}" >style=" display: none"</c:if>  width="10%"
 											background="<%=basePath%>resource/images/bg2.gif"
 											bgcolor="#FFFFFF" class="STYLE1"
 											style="width: 9%; height: 22px;">
@@ -187,7 +189,7 @@ for(i=0;i<cs.length;i++){
 											</div>
 										</td>
 									</tr>
-				<% List<CustomerTypeInfo> list = (List<CustomerTypeInfo>)request.getAttribute("list");
+				<% List<CustomerTypeInfo> list = (List<CustomerTypeInfo>)request.getAttribute("customerTypeList");
 							if(list!=null && list.size()>0){
 								for(int i=0;i<list.size();i++){ 
 								CustomerTypeInfo typeInfo = list.get(i);
@@ -206,11 +208,11 @@ for(i=0;i<cs.length;i++){
 												<span class="STYLE1"><%=typeInfo.getCustomerTypeName() %></span>
 											</div>
 										</td>
-										<td   <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF" style="width: 9%">
+										<td   <c:if test="${userinfo.roleId eq '3' and userinfo.roleId eq '4'}" >style=" display: none"</c:if>   height="20" bgcolor="#FFFFFF" style="width: 9%">
 											<div align="center">
 												<span class="STYLE4"><img src="<%=basePath%>resource/images/del.gif"
-														width="16" height="16" /><a
-													href="<%=basePath%>servlet/CustomerTypeDeleteServlet?typeId=<%=typeInfo.getCustomerTypeId()%>">删除</a>
+														width="16" height="16" />
+														<a href="<%=basePath%>customerType_deleteType?customerTypeId=<%=typeInfo.getCustomerTypeId()%>">删除</a>
 												</span>
 											</div>
 										</td>

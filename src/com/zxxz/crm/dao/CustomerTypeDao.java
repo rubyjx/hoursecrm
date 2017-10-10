@@ -19,5 +19,8 @@ public interface CustomerTypeDao {
 	/**
 	 * 添加用户
 	 */
+	List<CustomerTypeInfo> findCustomerTypeByTypeName(String typeName);
+	void deleteType(CustomerTypeInfo customerType);
+	void addType(CustomerTypeInfo customerType);
 
 }
