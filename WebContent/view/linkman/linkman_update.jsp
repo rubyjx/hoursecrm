@@ -38,17 +38,17 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/LInkManUpdateServlet "
+		<form action="${pageContext.request.contextPath}/linkMan_updateLinkMan"
 			method="post" name="form1" onsubmit="return checkForm('form1');">
 			<%
 				LinkManInfo linkManInfo = (LinkManInfo) request
-						.getAttribute("linkmanList");
+						.getAttribute("linkMan");
 			%>
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
 					<td class=editHeaderTd colSpan=7 style="height: 49px">
-						请输入详细信息<input type="hidden" name="linkManId" value="<%=linkManInfo.getLinkmanId()%>" />
+						请输入详细信息<input type="hidden" name="linkmanId" value="<%=linkManInfo.getLinkmanId()%>" />
 					</td>
 		
 				</tr>
@@ -59,7 +59,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="userName" style="width: 145px">
+						<select name="customerId" style="width: 145px">
 							<%
 								List<CustomerInfo> customerList = (List<CustomerInfo>) request
 										.getAttribute("customerList");
@@ -69,7 +69,7 @@
 									CustomerInfo customerInfo = customerList.get(i);
 							%>
 							<option value="<%=customerInfo.getCustomerId()%>"
-								<%if (customerInfo.getCustomerId()==linkManInfo.getCoustomerId()){ %>
+								<%if (customerInfo.getCustomerId()==linkManInfo.getCustomerId()){ %>
 								selected="selected" <% } %>><%=customerInfo.getCustomerName()%></option>
 							<%
 								}
@@ -83,7 +83,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px" name="linkManName" disabled="disabled" value="<%=linkManInfo.getLinkmanName()%>">
+						<input type="text" style="width: 145px" name="linkmanName" disabled="disabled" value="<%=linkManInfo.getLinkmanName()%>">
 						&nbsp;
 					</td>
 				</tr>
@@ -96,11 +96,11 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="radio" name="LinkManSex" value="男"
+						<input type="radio" name="LinkmanSex" value="男"
 							<%if  (linkManInfo.getLinkmanSex().equals("男")){ %>
 							checked="checked" <%} %> />
 						男&nbsp;&nbsp;
-						<input type="radio" name="LinkManSex" value="女"
+						<input type="radio" name="LinkmanSex" value="女"
 							<%if  (linkManInfo.getLinkmanSex().equals("女")){ %>
 							checked="checked" <%} %> />
 						女
@@ -112,7 +112,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px" name="linkManAge" check_str="联系人年龄"
+						<input type="text" style="width: 145px" name="linkmanAge" check_str="联系人年龄"
 							check_type="integer" value="<%=linkManInfo.getLinkmanAge()%>">
 					</td>
 				</tr>
@@ -124,7 +124,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px" name="linkManJob"
+						<input type="text" style="width: 145px" name="linkmanJob"
 							value="<%=linkManInfo.getLinkmanJob()%>">
 					</td>
 					<td bgcolor="#FFFDF0" style="width: 13%">
@@ -133,7 +133,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  style="width: 145px"  name="linkManMobile"
+						<input type="text"  style="width: 145px"  name="linkmanMobile"
 							value="<%=linkManInfo.getLinkmanMobile()%>">
 						&nbsp;
 					</td>
@@ -146,7 +146,7 @@
 						</div>
 					</td>
 					<td colspan="7" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px"  name="linkManRelation"
+						<input type="text" style="width: 145px"  name="linkmanRelation"
 							value="<%=linkManInfo.getLinkmanRelation()%>">
 						&nbsp;
 					</td>

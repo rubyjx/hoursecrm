@@ -115,7 +115,7 @@ for(i=0;i<cs.length;i++){
 	<%
 						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo");
 			 %>
-	<form action="<%=basePath%>customerCondition_queryCondition"  method="post">
+	<form action="${pageContext.request.contextPath}/customerLinkRecord_recordList"  method="post">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td height="30" background="<%=basePath%>resource/images/tab_05.gif">

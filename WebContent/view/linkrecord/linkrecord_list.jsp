@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*,com.zxxz.crm.vo.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,7 +48,7 @@ A:hover {
 
 function add(){
 			//只提交到doGet方法
-			window.location = "<%=basePath%>servlet/LinkRecordAddServlet";
+			window.location = "${pageContext.request.contextPath}/customerLinkRecord_preAddRecord";
 		}
 var  highlightcolor='#c1ebff';
 
@@ -101,9 +102,9 @@ for(i=0;i<cs.length;i++){
   <body>
   
   <%
-						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo2");
+						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo");
 			 %>
- <form action="<%=basePath%>servlet/LinkRecordQueryServlet" method="post">
+ <form action="${pageContext.request.contextPath }/customerLinkRecord_recordList" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	  <tr>
     <td height="30" background="<%=basePath%>resource/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -145,19 +146,19 @@ for(i=0;i<cs.length;i++){
 		<td width="20%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">联系主题</span></div></td>
 
 	<td width="20%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">联系备注</span></div></td>
-            <td   <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>  width="15%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+            <td  <c:if test="${userinfo.roleId eq '3' and userinfo.roleId eq '4'}" >style=" display: none"</c:if>  width="15%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
           </tr>
 	 
          
 			
-			<% List<LinkRecordInfo> list = (List<LinkRecordInfo>)request.getAttribute("list");
+			<% List<LinkRecordInfo> list = (List<LinkRecordInfo>)request.getAttribute("recordList");
 			if(list!=null && list.size()>0){
 			for(int i=0;i<list.size();i++){ 
 				LinkRecordInfo linkRecord = list.get(i);
 			%>
 			<tr>
 			<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=i+1%></span></div></td>
-				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getCustomerName() %></span></div></td>
+				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getCustomerInfo().getCustomerName()%></span></div></td>
 				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getLinkTime() %></span></div></td>
 				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getLinkNexttime() %></span></div></td>
 				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getLinkType() %></span></div></td>
@@ -165,7 +166,9 @@ for(i=0;i<cs.length;i++){
 				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getLinkTheme() %></span></div></td>
 				<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=linkRecord.getLinkRemark() %></span></div></td>
 				 
-				 <td  <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE4"><img src="<%=basePath%>resource/images/del.gif" width="16" height="16" /><a href="<%=basePath%>servlet/LinkRecordDeleteServlet?recordId=<%=linkRecord.getRecordId() %>">删除</a></span></div></td>
+				 <td  <c:if test="${userinfo.roleId eq '3' and userinfo.roleId eq '4'}" >style="display:none"</c:if>   height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE4">
+				     <img src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
+				     <a href="${pageContext.request.contextPath}/customerLinkRecord_deleteRecord?recordId=<%=linkRecord.getRecordId() %>">删除</a></span></div></td>
 				
 
 			</tr>

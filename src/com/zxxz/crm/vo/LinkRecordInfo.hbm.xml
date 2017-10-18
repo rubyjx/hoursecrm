@@ -16,7 +16,7 @@
 		<property name="linkNexttime" column="link_Nexttime"/>
 		<property name="linkRemark" column="link_Remark"/>
 		<property name="isUsed" column="is_Used"/>
-    
+        <many-to-one name="customerInfo"  cascade="save-update" column="customer_Id" class="com.zxxz.crm.vo.CustomerInfo" insert="false" update="false"> </many-to-one>
     </class>
     
 </hibernate-mapping>

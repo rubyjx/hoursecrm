@@ -140,29 +140,44 @@
 
 	<!-- customertype业务 -->
 	<bean id="customerTypeAction" class="com.zxxz.crm.action.CustomerTypeAction">
-         <property name="customerTypeService" ref="customerTypeService"></property>
+		<property name="customerTypeService" ref="customerTypeService"></property>
 	</bean>
 	<!-- customertypeService -->
 	<bean id="customerTypeService" class="com.zxxz.crm.service.impl.CustomerTypeServiceImpl">
-	
+
 	</bean>
-	
+
 	<!-- customerCondition模块 -->
 	<!-- customerConditionAction -->
 	<bean id="customerConditionAction" class="com.zxxz.crm.action.CustomerConditionAction">
-	     <property name="customerConditionService" ref="customerConditionService"></property>
+		<property name="customerConditionService" ref="customerConditionService"></property>
 	</bean>
 	<!-- customerConditionService -->
 	<bean id="customerConditionService" class="com.zxxz.crm.service.impl.CustomerConditionServiceImpl"></bean>
-    
-    <!-- customerSource模块 -->
-    <!-- customerSourceAction -->
-    <bean id="customerSourceAction" class="com.zxxz.crm.action.CustomerSourceAction">
-       
-    </bean>
-    
-    <bean id="customerSourceService" class="com.zxxz.crm.service.impl.CustomerSourceServiceImpl"></bean>
-    
+
+	<!-- customerSource模块 -->
+	<!-- customerSourceAction -->
+	<bean id="customerSourceAction" class="com.zxxz.crm.action.CustomerSourceAction">
+
+	</bean>
+
+	<bean id="customerSourceService" class="com.zxxz.crm.service.impl.CustomerSourceServiceImpl"></bean>
+
+	<!-- customerLinkRecord模块 -->
+	<bean id="customerLinkRecordAction" class="com.zxxz.crm.action.CustomerLinkRecordAction"></bean>
+	<bean id="customerLinkRecordService" class="com.zxxz.crm.service.impl.CustomerLinkRecordServiceImpl"></bean>
+	<bean id="customerLinkRecordDao" class="com.zxxz.crm.dao.impl.CustomerLinkRecordDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+
+	<!-- linkMan模块 -->
+	<!-- linkManAction -->
+	<bean id="linkManAction" class="com.zxxz.crm.action.LinkManAction"></bean>
+	<bean id="linkManService" class="com.zxxz.crm.service.impl.LinkManServiceImpl"></bean>
+	<bean id="linkManDao" class="com.zxxz.crm.dao.impl.LinkManDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 	<!-- 配置平台事物管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">

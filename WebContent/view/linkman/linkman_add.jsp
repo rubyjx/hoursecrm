@@ -35,7 +35,7 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/LinkManAddServlet " method="post" name="form1" onsubmit="return checkForm('form1');">
+		<form action="${pageContext.request.contextPath}/linkMan_addLinkMan" method="post" name="form1" onsubmit="return checkForm('form1');">
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
@@ -50,7 +50,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="userName" style="width: 145px">
+						<select name="customerId" style="width: 145px">
 							<%
 								List<CustomerInfo> customerList = (List<CustomerInfo>) request
 										.getAttribute("customerList");
@@ -72,7 +72,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  style="width: 145px" maxlength="20"  name="linkManName"  check_str="联系人名称">
+						<input type="text"  style="width: 145px" maxlength="20"  name="linkmanName"  check_str="联系人名称">
 						&nbsp;
 					</td>
 				</tr>
@@ -84,9 +84,9 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="radio" name="LinkManSex" value="男" checked="checked" />
+						<input type="radio" name="linkmanSex" value="男" checked="checked" />
 						男&nbsp;&nbsp;
-						<input type="radio" name="LinkManSex" value="女" />
+						<input type="radio" name="linkmanSex" value="女" />
 						女
 						<br />
 					</td>
@@ -96,7 +96,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px" name="linkManAge"  check_str="联系人年龄"  check_type="integer">
+						<input type="text" style="width: 145px" name="linkmanAge"  check_str="联系人年龄"  check_type="integer">
 					</td>
 				</tr>
 			
@@ -107,7 +107,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px"  maxlength="20" name="linkManJob">
+						<input type="text" style="width: 145px"  maxlength="20" name="linkmanJob">
 					</td>
 					<td bgcolor="#FFFDF0" style="width: 13%">
 						<div align="center">
@@ -115,7 +115,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text" style="width: 145px"  maxlength="11"  name="linkManMobile">
+						<input type="text" style="width: 145px"  maxlength="11"  name="linkmanMobile">
 						&nbsp;
 					</td>
 				</tr>
@@ -127,7 +127,7 @@
 						</div>
 					</td>
 					<td colspan="5" bgcolor="#FFFFFF">
-						<input type="text"style="width: 145px"   maxlength="20"  name="linkManRelation">
+						<input type="text"style="width: 145px"   maxlength="20"  name="linkmanRelation">
 						&nbsp;
 					</td>
 				</tr>

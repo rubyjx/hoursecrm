@@ -273,7 +273,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"><a
-																						href="#"
+																						href="${pageContext.request.contextPath}/customerLinkRecord_recordList"
 																						target="mainFrame">联系记录</a> </span>
 																				</td>
 																			</tr>
@@ -295,7 +295,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"><a
-																						href="#"
+																						href="${pageContext.request.contextPath}/linkMan_linkManList"
 																						target="mainFrame">联系人</a> </span>
 																				</td>
 																			</tr>

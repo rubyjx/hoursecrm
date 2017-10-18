@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript">
 		alert('${info}');
-		window.location="<%=basePath%>servlet/LinkRecordQueryServlet";
+		window.location="${pageContext.request.contextPath}/customerLinkRecord_recordList";
 		/*等同于超链接 <a>*/
 	</script>
   </head>

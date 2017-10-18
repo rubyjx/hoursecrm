@@ -8,139 +8,145 @@ package com.zxxz.crm.vo;
 
 public class LinkManInfo {
 
-	
 	/**
 	 * 联系人编号
 	 */
-	private int LinkmanId;
+	private int linkmanId;
 
 	/**
 	 * 客户编号
 	 */
 
-	private int CoustomerId;
-	
+	private int customerId;
+
 	/**
 	 * 客户名称
 	 */
-	private String CoustomerName;
-	
+	private String customerName;
+
 	/**
 	 * 联系人姓名
 	 */
-	private String LinkmanName;
+	private String linkmanName;
 
 	/**
 	 * 联系人性别
 	 */
-	private String LinkmanSex;
+	private String linkmanSex;
 
 	/**
 	 * 联系人年龄
 	 */
-	private int LinkmanAge;
+	private int linkmanAge;
 
 	/**
 	 * 联系人职业
 	 */
-	private String LinkmanJob;
+	private String linkmanJob;
 
 	/**
 	 * 联系人手机号码
 	 */
-	private String LinkmanMobile;
+	private String linkmanMobile;
 
 	/**
 	 * 联系人与客户关系
 	 */
-	private String LinkmanRelation;
+	private String linkmanRelation;
 
 	/**
 	 * 是否有效
 	 */
-	private String IsUsed;
+	private String isUsed;
+
+	private CustomerInfo customerInfo;
+
+	public CustomerInfo getCustomerInfo() {
+		return customerInfo;
+	}
+
+	public void setCustomerInfo(CustomerInfo customerInfo) {
+		this.customerInfo = customerInfo;
+	}
 
 	public int getLinkmanId() {
-		return LinkmanId;
+		return linkmanId;
 	}
 
 	public void setLinkmanId(int linkmanId) {
-		LinkmanId = linkmanId;
+		this.linkmanId = linkmanId;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public String getLinkmanName() {
-		return LinkmanName;
+		return linkmanName;
 	}
 
 	public void setLinkmanName(String linkmanName) {
-		LinkmanName = linkmanName;
+		this.linkmanName = linkmanName;
 	}
 
 	public String getLinkmanSex() {
-		return LinkmanSex;
+		return linkmanSex;
 	}
 
 	public void setLinkmanSex(String linkmanSex) {
-		LinkmanSex = linkmanSex;
+		this.linkmanSex = linkmanSex;
 	}
 
 	public int getLinkmanAge() {
-		return LinkmanAge;
+		return linkmanAge;
 	}
 
 	public void setLinkmanAge(int linkmanAge) {
-		LinkmanAge = linkmanAge;
+		this.linkmanAge = linkmanAge;
 	}
 
 	public String getLinkmanJob() {
-		return LinkmanJob;
+		return linkmanJob;
 	}
 
 	public void setLinkmanJob(String linkmanJob) {
-		LinkmanJob = linkmanJob;
+		this.linkmanJob = linkmanJob;
 	}
 
 	public String getLinkmanMobile() {
-		return LinkmanMobile;
+		return linkmanMobile;
 	}
 
 	public void setLinkmanMobile(String linkmanMobile) {
-		LinkmanMobile = linkmanMobile;
+		this.linkmanMobile = linkmanMobile;
 	}
 
 	public String getLinkmanRelation() {
-		return LinkmanRelation;
+		return linkmanRelation;
 	}
 
 	public void setLinkmanRelation(String linkmanRelation) {
-		LinkmanRelation = linkmanRelation;
+		this.linkmanRelation = linkmanRelation;
 	}
 
 	public String getIsUsed() {
-		return IsUsed;
+		return isUsed;
 	}
 
 	public void setIsUsed(String isUsed) {
-		IsUsed = isUsed;
+		this.isUsed = isUsed;
 	}
-
-	public int getCoustomerId() {
-		return CoustomerId;
-	}
-
-	public void setCoustomerId(int coustomerId) {
-		CoustomerId = coustomerId;
-	}
-
-
-	public String getCoustomerName() {
-		return CoustomerName;
-	}
-
-	public void setCoustomerName(String coustomerName) {
-		CoustomerName = coustomerName;
-	}
-
-	
 
 }
