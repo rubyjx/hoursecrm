@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/CustomerTypeAddServlet"  name="form4" onsubmit="return checkForm('form4');"  method="post" >
+		<form action="<%=basePath%>customerType_addType"  name="form4" onsubmit="return checkForm('form4');"  method="post" >
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
@@ -39,7 +39,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<input type="text"  maxlength="20"  name="typeName"  check_str="顾客类型名称">
+						<input type="text"  maxlength="20"  name="customerTypeName"  check_str="顾客类型名称">
 						&nbsp;
 					</td>
 				</tr>

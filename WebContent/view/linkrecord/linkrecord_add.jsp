@@ -27,7 +27,7 @@
 	</head>
 
 	<body>
-		<form action="servlet/LinkRecordAddServlet" method="post"  name="form1" onsubmit="return checkForm('form1');">
+		<form action="${pageContext.request.contextPath}/customerLinkRecord_addRecord" method="post"  name="form1" onsubmit="return checkForm('form1');">
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
@@ -45,7 +45,7 @@
 						<select name="customerId"  style=" width: 145px">
 							<%
 								List<CustomerInfo> list = (List<CustomerInfo>) request
-										.getAttribute("List");
+										.getAttribute("customerList");
 								if (list != null && list.size() > 0) {
 									for (CustomerInfo customer : list) {
 							%>

@@ -20,6 +20,7 @@ public class CustomerCareAction extends ActionSupport implements ModelDriven<Cus
 	private CustomerCareService customerCareService;
 	@Resource(name = "customerService")
 	private CustomerService customerService;
+	
 	private CustomerCareInfo customerCareInfo = new CustomerCareInfo();
 
 	// modeldriven封装数据

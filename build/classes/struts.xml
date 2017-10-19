@@ -56,5 +56,44 @@
 			<result name="noticelist">/view/notice/notice_list.jsp</result>
 			<allowed-methods>noticeList</allowed-methods>
 		</action>
+		
+		<!-- customerTypeAction业务 -->
+		<action name="customerType_*"  class="customerTypeAction" method="{1}">
+		      <result name="typeList">/view/customerType/customerType_list.jsp</result>
+		      <result name="typesave">/view/customerType/customerType_save.jsp</result>
+		     <allowed-methods>typeList,queryType,deleteType,addType</allowed-methods> 
+		</action>
+		
+		<!-- customerconditionAction模块 -->
+		<action name="customerCondition_*" class="customerConditionAction" method="{1}">
+		       <result name="conditionSave">/view/customerCondition/customerCondition_save.jsp</result>
+		       <result name="conditionList">/view/customerCondition/customerCondition_list.jsp</result>
+		       <allowed-methods>conditionList,queryCondition,deleteCondition,addCondition</allowed-methods> 	
+		</action>
+		
+		<!-- customerSourceAction -->
+		<action name="customerSource_*" class="customerSourceAction" method="{1}">
+		       <result name="sourceSave">/view/customerSource/customerSource_save.jsp</result>
+		       <result name="sourceList">/view/customerSource/customerSource_list.jsp</result>
+		       <allowed-methods>sourceList,querySource,deleteSource,addSource</allowed-methods> 	
+		</action>
+		
+		<!-- customerLinkRecordAction -->
+		<action name="customerLinkRecord_*" class="customerLinkRecordAction" method="{1}">
+		       <result name="recordList">/view/linkrecord/linkrecord_list.jsp</result>
+		       <result name="recordSave">/view/linkrecord/linkrecord_save.jsp</result>
+		       <result name="recordAdd">/view/linkrecord/linkrecord_add.jsp</result>
+		       <allowed-methods>recordList,preAddRecord,deleteRecord,addRecord</allowed-methods> 	
+		</action>
+		
+		
+		<!-- linkManAction -->
+		<action name="linkMan_*" class="linkManAction" method="{1}">
+		      <result name="linkManList">/view/linkman/linkman_list.jsp</result>
+		      <result name="linkManSave">/view/linkman/linkman_save.jsp</result>
+		      <result name="linkManAdd">/view/linkman/linkman_add.jsp</result>
+		      <result name="linkManUpdate">/view/linkman/linkman_update.jsp</result>		 
+		      <allowed-methods>linkManList,deleteLinkMan,addLinkMan,updateLinkMan,preAddLinkMan,preUpdateLinkMan</allowed-methods> 	      
+		</action>
 	</package>
 </struts>

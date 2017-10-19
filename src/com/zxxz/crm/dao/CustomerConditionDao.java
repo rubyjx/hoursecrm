@@ -16,4 +16,7 @@ public interface CustomerConditionDao {
      * @return
      */
 	List<CustomerConditionInfo> findAllCondition();
+	List<CustomerConditionInfo> findConditionByConditionName(String conditionName);
+	void deleteCondition(CustomerConditionInfo findConditionInfoByConditionId);
+	void addCondition(CustomerConditionInfo customerConditionInfo);
 }

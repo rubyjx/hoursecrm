@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-11 11:15:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.zxxz.crm.vo.LinkManInfo" table="customer_linkman">
+    	<!-- 定义主键 -->
+		<id name="linkmanId" column="linkman_Id">
+			<generator class="native"></generator>
+		</id>
+		<property name="customerId" column="customer_Id"/>
+		<property name="linkmanName" column="linkman_Name"/>
+		<property name="linkmanSex" column="linkman_Sex"/>
+		<property name="linkmanAge" column="linkman_Age"/>
+		<property name="linkmanJob" column="linkman_Job"/>
+		<property name="linkmanMobile" column="linkman_Mobile"/>
+		<property name="linkmanRelation" column="linkman_Relation"/>
+        <property name="isUsed" column="is_Used"/>
+        <many-to-one name="customerInfo"  cascade="save-update" column="customer_Id" class="com.zxxz.crm.vo.CustomerInfo" insert="false" update="false"> </many-to-one>
+        
+    </class>   
+</hibernate-mapping>

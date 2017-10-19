@@ -51,6 +51,17 @@ public class LinkRecordInfo {
 	 * 是否有效
 	 */
 	private String isUsed;
+	
+	private CustomerInfo customerInfo;
+	
+
+	public CustomerInfo getCustomerInfo() {
+		return customerInfo;
+	}
+
+	public void setCustomerInfo(CustomerInfo customerInfo) {
+		this.customerInfo = customerInfo;
+	}
 
 	public int getRecordId() {
 		return recordId;

@@ -20,7 +20,7 @@
 		<meta http-equiv="description" content="This is my page">
 		<script type="text/javascript">
 			alert('${info}');
-			window.location="<%=basePath%>servlet/CustomerConditionQueryServlet";
+			window.location="<%=basePath%>customerCondition_conditionList";
 			/*等同于超链接 <a>*/
 		</script>
 

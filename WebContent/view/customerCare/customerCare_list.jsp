@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.zxxz.crm.vo.CustomerCareInfo"%>
 <%@page import="com.zxxz.crm.vo.UserInfo"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -152,8 +153,11 @@ for(i=0;i<cs.length;i++){
 	    
 		<td width="10%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">备注</span></div></td>
  	    <td width="3%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">关怀人</span></div></td>
-        <td   <% if  ("3".equals(userInfo.getRoleId()) &&  "4".equals(userInfo.getRoleId())) {%> style=" display: none  "  <%}%>   width="4%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1">
+       <%--  <td   <%if  ("3".equals(userInfo.getRoleId()) &&"4".equals(userInfo.getRoleId())) {%> style=" display: none"  <%}%>   width="4%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1">
            <div align="center">基本操作</div>
+        </td> --%>
+        <td   <c:if test="${userinfo.roleId eq '3' and userinfo.roleId eq '4'}" >style=" display: none"</c:if>  width="4%" height="22" background="${pageContext.request.contextPath}/resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"   >
+          <div align="center">基本操作</div>
         </td>
 
 </tr>
@@ -176,8 +180,7 @@ for(i=0;i<cs.length;i++){
 		<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=care.getCareRemark() %> </span></div></td>
 		 <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><%=care.getCarePeople() %></span></div></td>
            
-             
-             <td    <%   if  ("3".equals(userInfo.getRoleId()) &&  "4".equals(userInfo.getRoleId()) ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF">
+             <td    <c:if test="${userinfo.roleId eq '3' and userinfo.roleId eq '4'}" >style=" display: none"</c:if>   height="20" bgcolor="#FFFFFF">
                  <div align="center">
                     <span class="STYLE4">
                        <img src="<%=basePath%>resource/images/edt.gif" width="16" height="16" />
