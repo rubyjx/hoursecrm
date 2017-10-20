@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- add by likang  -->
+<hibernate-mapping>
+
+	<class name="com.zxxz.crm.vo.HouseInfo" table="house_info" lazy="false">
+		<id name="houseId" column="house_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="typeId" column="type_id"></property>
+		<property name="userId" column="user_id"></property>
+		<property name="houseAddress" column="house_address"></property>
+		<property name="housePrice" column="house_price"></property>
+		<property name="houseAmbient" column="house_ambient"></property>
+		<property name="isUsed" column="is_used"></property>
+		
+		<!-- 配置房屋的外键约束 -->
+		<many-to-one name="houseTypeInfo" class="com.zxxz.crm.vo.HouseTypeInfo" column="type_id" cascade="save-update" insert="false" update="false" lazy="false"></many-to-one>
+		<many-to-one name="userInfo" class="com.zxxz.crm.vo.UserInfo" column="user_Id" cascade="save-update" insert="false" update="false" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

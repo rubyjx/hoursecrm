@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- add by likang  -->
+<hibernate-mapping>
+	<class name="com.zxxz.crm.vo.HouseTypeInfo" table="house_type">
+		<!-- 主键映射 -->
+		<id name="houseTypeId" column="type_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="houseTypeName" column="type_name"></property>
+		<property name="houseTypeIsUsed" column="is_used"></property>
+		
+		<!-- 配置约束外键关系 -->
+		<set name="houseSet" table="house_info" inverse="true" >
+	       <key column="type_id" ></key>
+	       <one-to-many class="com.zxxz.crm.vo.HouseInfo"/>
+	    </set>
+	</class>
+</hibernate-mapping>
