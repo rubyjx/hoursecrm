@@ -1,5 +1,6 @@
 package com.zxxz.crm.vo;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -142,7 +143,9 @@ public class UserInfo {
      * 对应多个顾客
      * @return
      */
-    private List<CustomerInfo> customerList;
+    private Set<CustomerInfo> customerList = new HashSet<CustomerInfo>();
+    
+    private Set<HouseInfo> houseList = new HashSet<HouseInfo>();
     
     /**
      * 定义约束本类的外键信息
@@ -378,15 +381,6 @@ public class UserInfo {
 		this.rolePower = rolePower;
 	}
 
-
-	public List<CustomerInfo> getCustomerList() {
-		return customerList;
-	}
-
-	public void setCustomerList(List<CustomerInfo> customerList) {
-		this.customerList = customerList;
-	}
-
 	@Override
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", userName=" + userName + ", userSex=" + userSex + ", userAge=" + userAge
@@ -400,14 +394,24 @@ public class UserInfo {
 				+ customerList + "]";
 	}
 
-	
+	public Set<CustomerInfo> getCustomerList() {
+		return customerList;
+	}
+
+	public void setCustomerList(Set<CustomerInfo> customerList) {
+		this.customerList = customerList;
+	}
+
+	public Set<HouseInfo> getHouseList() {
+		return houseList;
+	}
+
+	public void setHouseList(Set<HouseInfo> houseList) {
+		this.houseList = houseList;
+	}
 
 	
-
 	
-
-	
-
 	
 
 }

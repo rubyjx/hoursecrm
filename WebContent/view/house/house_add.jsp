@@ -32,7 +32,7 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/HouseAddServlet" method="post" name="form2" onsubmit="return checkForm('form2');">
+		<form action="<%=basePath%>/house_addHouse" method="post" name="form2" onsubmit="return checkForm('form2');">
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>
@@ -47,7 +47,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="houseType"   style="width: 145px">
+						<select name="typeId"   style="width: 145px">
 							<%
 								List<HouseTypeInfo> houseTypeList = (List<HouseTypeInfo>) request
 										.getAttribute("houseList");
@@ -79,7 +79,7 @@
 						</div>
 					</td>
 					<td colspan="3" bgcolor="#FFFFFF">
-						<select name="userName" style="width: 145px">
+						<select name="userId" style="width: 145px">
 							<%
 								List<UserInfo> userList = (List<UserInfo>) request
 										.getAttribute("userList");

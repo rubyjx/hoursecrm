@@ -36,7 +36,7 @@ public interface UserService {
      * @param queryType
      * @return
      */
-	PageBean<UserInfo> findUserByCondition(int pageIndex,int pageSize,String url,String userName, String queryType);
+    public List<UserInfo> findUserByCondition(String userName, String queryType);
 	
 	/**
 	 * 

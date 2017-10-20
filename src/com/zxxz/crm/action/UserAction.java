@@ -12,7 +12,6 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.zxxz.crm.service.DepartmentService;
 import com.zxxz.crm.service.RoleService;
 import com.zxxz.crm.service.UserService;
-import com.zxxz.crm.vo.CustomerInfo;
 import com.zxxz.crm.vo.PageBean;
 import com.zxxz.crm.vo.UserInfo;
 
@@ -141,19 +140,20 @@ public class UserAction extends ActionSupport implements ModelDriven<UserInfo> {
 		//获取request域
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
-		//获取分页的数据
+		/*获取分页的数据
 		int pageIndex = getpc(request);
 		int pageSize = 10;
 		String url = getUrl(request);
+		*/
 		
 		// 条件
 		String userName = request.getParameter("userName");
 		String queryType = request.getParameter("queryType");
 
-		PageBean<UserInfo> userList = userService.findUserByCondition(pageIndex,pageSize,url,userName, queryType);
+		List<UserInfo> userList = userService.findUserByCondition(userName, queryType);
 		
 		
-		request.setAttribute("userlist", userList);
+		request.setAttribute("userList", userList);
 
 		return "userlist";
 
@@ -255,7 +255,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserInfo> {
 	 * @param request
 	 * @return
 	 */
-	private int getpc(HttpServletRequest request) {
+/*	private int getpc(HttpServletRequest request) {
 		String pagecount = request.getParameter("pc");
 		int pc = 0;
 		if (pagecount != null && !pagecount.isEmpty()) {
@@ -265,26 +265,24 @@ public class UserAction extends ActionSupport implements ModelDriven<UserInfo> {
 		}
 		return pc;
 	}
-	
+	*/
 	
 	/**
 	 * 获取页面请求链接url
 	 * @return
 	 */
-	private String getUrl(HttpServletRequest request){
-		//获取url头
-		String context = request.getContextPath();
-		//获取页面地址
-		String servlet = request.getServletPath();
-		//获取链接后缀参数
-		String query = request.getQueryString();
-		
-		if (query.contains("&pc=")) {
-			int index = query.lastIndexOf("&pc=");
-			query = query.substring(0, index);
+/*	private String getUrl(HttpServletRequest req){
+		String context = req.getContextPath();
+		String servlet = req.getServletPath();
+		String querryString = req.getQueryString();
+		// System.out.println(context+servlet+"?"+querryString);
+		if (querryString!=null && querryString.contains("&pc=")) {
+			int index = querryString.lastIndexOf("&pc=");
+			querryString = querryString.substring(0, index);
+			return context + servlet + "?" + querryString;
 		}
-
-		return context + servlet + "?" + query;
-	}
+		
+		return context+servlet;
+	}*/
 
 }

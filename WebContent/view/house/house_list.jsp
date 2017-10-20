@@ -54,8 +54,8 @@ A:hover {
 }
 -->
 </style>
-
-		<script>
+<script type="text/javascript" src="resource/js/jquery-2.0.0.js"></script>
+<script>
 var  highlightcolor='#c1ebff';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
 var  clickcolor='#51b2f6';
@@ -105,18 +105,28 @@ for(i=0;i<cs.length;i++){
 
 function add(){
 			//只提交到doGet方法
-			window.location = "<%=basePath%>servlet/HouseAddServlet";
+			window.location = "<%=basePath%>/house_addHouse";
 		}
+function subselect(){
+	var inputdata=$('input[name="houseInput"]').val();
+	if(inputdata.length==0){
+		$('input[name="houseInput"]').val('请输入内容').css('background','#1873AA');
+		return false;
+	}else{
+		
+    	$('#selectdata').submit();
+	}
+}
 	
 </script>
 
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/HouseQueryServlet" method="post">
+		<form action="<%=basePath%>/house_findAllHouse" method="post">
 		
 		<%
-						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo2");
+						UserInfo  userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
 		%>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
@@ -149,7 +159,7 @@ function add(){
 											<td class="STYLE4">
 												&nbsp;&nbsp;
 												<input type="submit" value="查询" style="width: 50px" />
-												<input   type="hidden"   name="userId"   value="<%=userInfo.getUserId() %>"  />
+												<input type="hidden"   name="userId"   value="<%=userInfo.getUserId() %>"  />
 											</td>
 											<td class="STYLE4">
 												&nbsp;&nbsp;
@@ -229,8 +239,7 @@ function add(){
 											</td>
 										</tr>
 										<%
-											List<HouseInfo> list = (List<HouseInfo>) request
-													.getAttribute("houselist");
+											List<HouseInfo> list = (List<HouseInfo>) request.getAttribute("houseList");
 											if (list != null && list.size() > 0) {
 												for (int i = 0; i < list.size(); i++) {
 													HouseInfo houseInfo = list.get(i);
@@ -274,10 +283,10 @@ function add(){
 													<span class="STYLE4"> <img
 															src="<%=basePath%>resource/images/edt.gif" width="16"
 															height="16" /> <a
-														href="<%=basePath%>servlet/HouseUpdateServlet?houseId=<%=houseInfo.getHouseId()%>"">编辑</a>&nbsp;
+														href="<%=basePath%>/house_updateHouse?houseId=<%=houseInfo.getHouseId()%>">编辑</a>&nbsp;
 														&nbsp; <img src="<%=basePath%>resource/images/del.gif"
 															width="16" height="16" /><a
-														href="<%=basePath%>servlet/HouseDeleteServlet?houseId=<%=houseInfo.getHouseId()%>">删除</a>
+														href="<%=basePath%>/house_deleteHouse?houseId=<%=houseInfo.getHouseId()%>">删除</a>
 													</span>
 												</div>
 											</td>
@@ -320,7 +329,7 @@ function add(){
 									<table width="100%" border="0" cellspacing="0" cellpadding="0">
 										<tr>
 											<td class="STYLE4">
-												&nbsp;&nbsp;共有 <%= list.size() %> 条记录，当前第 1/1 页
+												&nbsp;&nbsp;共有 <%=list.size() %> 条记录，当前第 1/1 页
 											</td>
 											<td>
 												<table border="0" align="right" cellpadding="0"

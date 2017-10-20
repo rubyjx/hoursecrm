@@ -42,7 +42,24 @@
 				customerAllocation,customerDivide,customerDivideUpdate,
 				customerCareList,deleteCustomerCare,updateCustomerCare</allowed-methods>
 		</action>
-
+		
+		<!-- 配置HouseAction信息 -->
+		<action name="house_*" class="houseAction" method="{1}">
+			<result name="houseList">/view/house/house_list.jsp</result>
+			<result name="houseAdd">/view/house/house_add.jsp</result>
+			<result name="houseSave">/view/house/house_save.jsp</result>
+			<result name="houseUpdate">/view/house/house_update.jsp</result>
+			<allowed-methods>findAllHouse,addHouse,updateHouse,deleteHouse</allowed-methods>
+		</action>
+		
+		<!-- 配置HouseTypeAction信息 -->
+		<action name="houseType_*" class="houseTypeAction" method="{1}">
+			<result name="houseTypeList">/view/houseType/houseType_list.jsp</result>
+			<result name="houseTypeSave">/view/houseType/houseType_save.jsp</result>
+			<allowed-methods>findAllHouseType,deleteHouseType,addHouseType</allowed-methods>
+		</action>
+		
+		
 		<action name="customercare_*" class="customerCareAction" method="{1}">
 			<result name="customercaremsg">/view/customerCare/customerCare_save.jsp</result>
 			<result name="customercarelist">/view/customerCare/customerCare_list.jsp</result>

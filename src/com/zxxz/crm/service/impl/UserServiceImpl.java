@@ -89,13 +89,13 @@ public class UserServiceImpl implements UserService {
 	 * 根据条件查询符合条件的UserInfo
 	 */
 	@Override
-	public PageBean<UserInfo> findUserByCondition(int pageIndex,int pageSize,String url,String userName, String queryType) {
+	public List<UserInfo> findUserByCondition(String userName, String queryType) {
 		// 调用dao中的方法获取员工的信息
 		//定义一个页面Bean对象
-		PageBean<UserInfo> pageBean = null;
+		//PageBean<UserInfo> pageBean = null;
 		//获取员工信息
-		List<UserInfo> findUserByCondition = userDao.findUserByCondition(pageIndex,pageSize,userName,queryType);
-		System.out.println(findUserByCondition);
+		List<UserInfo> findUserByCondition = userDao.findUserByCondition(userName,queryType);
+		//System.out.println(findUserByCondition);
 		// 使用for循环对类中的子段循环赋值
 		for (int i = 0; i < findUserByCondition.size(); i++) {
 			// 对实体类中的部门信息进行赋值
@@ -108,20 +108,21 @@ public class UserServiceImpl implements UserService {
 		}
 		/**
 		 * 建立分页实体类
-		 */
+		 *//*
 		pageBean = new PageBean<UserInfo>();
 		pageBean.setBeanlist(findUserByCondition);
 		pageBean.setPc(pageIndex);
 		pageBean.setUrl(url);
 		pageBean.setIc(pageSize);
-		/**
+		*//**
 		 * 获取总条目数
-		 */
+		 *//*
 
 		pageBean.setAi(findUserByCondition.size());
 		
 	
-		return pageBean;
+		return pageBean;*/
+		return findUserByCondition;
 	}
 	/**
 	 * 查询所有用户信息

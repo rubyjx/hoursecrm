@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
+    <base href="">
     
     <title>查询员工信息</title>
     
@@ -44,7 +44,18 @@ table td{word-break: keep-all;}
 
 -->
 </style>
-
+<script type="text/javascript" src="resource/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+	function subselect(){
+		var inputdata=$('input[name="userName"]').val();
+		if(inputdata.length==0){
+			$('input[name="userName"]').val('请输入内容').css('background','#1873AA');
+			return false;
+		}else{
+	    	$('#selectdata').submit();
+		}
+	}
+</script>
 <script>
 var  highlightcolor='#c1ebff';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
@@ -92,6 +103,16 @@ for(i=0;i<cs.length;i++){
 	cs[i].style.backgroundColor="";
 }
 }
+	function subselect(){
+		var inputdata=$('input[name="userName"]').val();
+		if(inputdata.length==0){
+			$('input[name="userName"]').val('请输入内容').css('background','#1873AA');
+			return false;
+		}else{
+	    	$('#selectdata').submit();
+		}
+
+	}
 </script>
 
   </head>
@@ -111,7 +132,7 @@ for(i=0;i<cs.length;i++){
       <tr>
         <td width="12" height="30"><img src="<%=basePath%>resource/images/tab_03.gif" width="12" height="30" /></td>
                 <td>
-            <form  action="${pageContext.request.contextPath}/user_findAllUser" method="get">    
+        <form id="selectdata" action="${pageContext.request.contextPath }/user_findAllUser" method="post">    
          <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td class="STYLE4" align="center">&nbsp;&nbsp;请输入查询内容：
@@ -124,7 +145,7 @@ for(i=0;i<cs.length;i++){
      				 	<option  value="4">员工学历</option>
    				 </select>            
    				</td>
-            <td class="STYLE4">&nbsp;&nbsp;<input  type="submit" value="查询" style="width:50px"/>
+            <td class="STYLE4">&nbsp;&nbsp;<input type="button" onclick="subselect()" value="查询" style="width:50px"/>
            </td>            
           </tr>
         </table>
@@ -160,8 +181,7 @@ for(i=0;i<cs.length;i++){
             <td height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1" style="width: 19%"><div align="center">基本操作</div></td>
           </tr>
           
-          <% PageBean<UserInfo> pageBean = (PageBean<UserInfo>)request.getAttribute("userlist");
-          	List<UserInfo> list = pageBean.getBeanlist();
+          <% List<UserInfo> list = (List<UserInfo>)request.getAttribute("userList");
 			if(list!=null && list.size()>0){
 				for(int i=0;i<list.size();i++){ 
 					UserInfo user = list.get(i);
@@ -220,19 +240,16 @@ for(i=0;i<cs.length;i++){
         <td width="12" height="35"><img src="<%=basePath%>resource/images/tab_18.gif" width="12" height="35" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="STYLE4">&nbsp;&nbsp;共有 <%=pageBean.getAi() %> 条记录，当前第<%=pageBean.getPc() %> /<%=pageBean.getAi()/pageBean.getIc()+1 %> 页</td>
+            <td class="STYLE4">&nbsp;&nbsp;共有<%=list.size() %>  条记录，当前第1 /1 页</td>
             <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="40"><a href="<%=pageBean.getUrl()+"&pc=1"  %>"><img src="<%=basePath%>resource/images/first.gif" width="37" height="15" /></a></td>
-                  <%
-                  if(pageBean.getAi()>10){
-                  %>
-	                  <td width="45"><a href="<%=pageBean.getUrl() %>&pc=<%=pageBean.getPc()-1  %>"><img src="<%=basePath%>resource/images/back.gif" width="43" height="15" /></a></td>
-	                  <td width="45"><a href="<%=pageBean.getUrl() %>&pc=<%=pageBean.getPc()+1  %>"><img src="<%=basePath%>resource/images/next.gif" width="43" height="15" /></a>
-	                  	
-	                  </td>
-                  <%} %>
-                  <td width="40"><a href="<%=pageBean.getUrl() %>&pc=<%=pageBean.getAp()  %>"><img src="<%=basePath%>resource/images/last.gif" width="37" height="15" /></a></td>
+                  <td width="40"><a href=""><img src="<%=basePath%>resource/images/first.gif" width="37" height="15" /></a></td>
+                  <td width="45"><a href=""><img src="<%=basePath%>resource/images/back.gif" width="43" height="15" /></a></td>
+                  <td width="45"><a href=""><img src="<%=basePath%>resource/images/next.gif" width="43" height="15" /></a>
+                  	
+                  </td>
+
+                  <td width="40"><a href=""><img src="<%=basePath%>resource/images/last.gif" width="37" height="15" /></a></td>
                   <td width="100"><div align="center"><span class="STYLE1">转到第
                     <input name="textfield" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" /> 
                     页 </span></div></td>

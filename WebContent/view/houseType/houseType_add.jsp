@@ -27,7 +27,7 @@
 	</head>
 
 	<body>
-		<form action="<%=basePath%>servlet/HouseTypeAddServlet" method="post" name="form2" onsubmit="return checkForm('form2');" >
+		<form action="<%=basePath%>/houseType_addHouseType" method="post" name="form2" onsubmit="return checkForm('form2');" >
 			<table class=editTable cellSpacing=1 cellPadding=0 width="100%"
 				align=center border=0>
 				<tr class=editHeaderTr>

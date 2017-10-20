@@ -2,11 +2,9 @@ package com.zxxz.crm.dao.impl;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.zxxz.crm.dao.UserDao;
-import com.zxxz.crm.utils.PageHibernateCallback;
 import com.zxxz.crm.vo.UserInfo;
 
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
@@ -16,6 +14,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	public List<UserInfo> findUserByUser_num(UserInfo user) {
 		String hql = "from UserInfo u where u.userNum=?";
+		
 		@SuppressWarnings("unchecked")
 		List<UserInfo> find = (List<UserInfo>) this.getHibernateTemplate().find(hql, user.getUserNum());
 
@@ -72,32 +71,35 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserInfo> findUserByCondition(int pageIndex,int pageSize,String userName, String queryType) {
+	public List<UserInfo> findUserByCondition(String userName, String queryType) {
 	    String hql="select a from UserInfo a,DepartmentInfo b,RoleInfo c where a.departmentId = b.departmentId and a.roleId = c.roleId and a.isUsed!=0"; 
 	    List<UserInfo> find =null;
 	    if(queryType!=null&&!queryType.isEmpty()){
 	    	switch (queryType) {
 			case "1":
-				hql+=" and  a.userName like ";
+				hql+=" and  a.userName like ?";
 				break;
 			case "2":
-				hql+=" and  b.departmentName like ";
+				hql+=" and  b.departmentName like ?";
 				break;
 			case "3":
-				hql+=" and  c.roleName like ";
+				hql+=" and  c.roleName like ?";
 				break;
 			case "4":
-				hql+=" and a.userDiploma like ";
+				hql+=" and a.userDiploma like ?";
 				break;
 			default:
 				
 				break;
 			}	
-	    	hql+="%"+userName+"%";
 	    	//find = (List<UserInfo>) this.getHibernateTemplate().find(hql, "%"+userName+"%");
 	    }
 	    try {
-		    find = (List<UserInfo>)this.getHibernateTemplate().execute((HibernateCallback<UserInfo>)new PageHibernateCallback(hql, null, (pageIndex - 1) * pageSize, pageSize));
+	    	if(queryType!=null&&!queryType.isEmpty()){
+	    		find = (List<UserInfo>)this.getHibernateTemplate().find(hql, "%"+userName+"%" );
+	    	}else{
+	    		find = (List<UserInfo>) this.getHibernateTemplate().find(hql);
+	    	}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

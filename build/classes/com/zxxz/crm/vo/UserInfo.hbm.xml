@@ -36,7 +36,13 @@
 	       <key  column="userId" ></key>
 	       <one-to-many class="com.zxxz.crm.vo.CustomerInfo"/>
 	    </set>  -->
-	    
+	   
+	   <!-- 配置一个员工管理多套房子 -->
+	   <set name="houseList" table="house_info" inverse="true" >
+		  <key column="user_id"></key>
+		  <one-to-many class="com.zxxz.crm.vo.HouseInfo"/>
+	   </set>
+	   
 	   <many-to-one name="roleInfo" class="com.zxxz.crm.vo.RoleInfo" column="role_Id" cascade="save-update" insert="false" update="false"></many-to-one>
 	   
 	   <many-to-one name="departmentInfo" class="com.zxxz.crm.vo.DepartmentInfo" column="department_Id" cascade="save-update" insert="false" update="false"></many-to-one>

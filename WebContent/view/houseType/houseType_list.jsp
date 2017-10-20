@@ -113,9 +113,9 @@ for(i=0;i<cs.length;i++){
 	<body>
 	
 	<%
-						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo2");
+						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userinfo");
 			 %>
-	<form action="<%=basePath%>servlet/HouseTypeQueryServlet"  method="post">
+	<form action="<%=basePath%>/houseType_findAllHouseType"  method="post">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td height="30" background="<%=basePath%>resource/images/tab_05.gif">
@@ -179,7 +179,7 @@ for(i=0;i<cs.length;i++){
 												<span class="STYLE1">房屋类型名称</span>
 											</div>
 										</td>
-										<td    <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>  width="10%"
+										<td    <%   if  (!userInfo.getRoleId().equals("3") && !userInfo.getRoleId().equals("4")){%> style=" display: none  "  <%}%>  width="10%"
 											background="<%=basePath%>resource/images/bg2.gif"
 											bgcolor="#FFFFFF" class="STYLE1"
 											style="width: 10%; height: 22px;">
@@ -204,14 +204,14 @@ for(i=0;i<cs.length;i++){
 										</td>
 										<td height="20" bgcolor="#FFFFFF" style="width: 85%">
 											<div align="center">
-												<span class="STYLE1"><%=houseTypeInfo.getHouseTypeName() %></span>
+												<span class="STYLE1"><input name="houseTypeId" type="hidden" value="<%=houseTypeInfo.getHouseTypeId() %>"> <%=houseTypeInfo.getHouseTypeName() %></span>
 											</div>
 										</td>
-										<td   <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF" style="width: 10%">
+										<td   <%   if  (!userInfo.getRoleId().equals("3") && !userInfo.getRoleId().equals("4") ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF" style="width: 10%">
 											<div align="center">
 												<span class="STYLE4"><img src="<%=basePath%>resource/images/del.gif"
 														width="16" height="16" /><a
-													href="<%=basePath%>servlet/HouseTypeDeleteServlet?houseTypeId=<%=houseTypeInfo.getHouseTypeId()%>">删除</a>
+													href="<%=basePath%>/houseType_deleteHouseType?houseTypeId=<%=houseTypeInfo.getHouseTypeId()%>">删除</a>
 												</span>
 											</div>
 										</td>

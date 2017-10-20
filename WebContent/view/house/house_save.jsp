@@ -20,12 +20,12 @@
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
 		<%
-						UserInfo userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo2");
+						UserInfo userInfo  =   (UserInfo)request.getSession().getAttribute("userinfo");
 	%>
 		
 		<script type="text/javascript">
 			alert('${info}');
-			window.location="<%=basePath%>servlet/HouseQueryServlet?userId=<%= userInfo.getUserId()  %>";
+			window.location="<%=basePath%>/house_findAllHouse";
 			/*等同于超链接 <a>*/
 		</script>
 

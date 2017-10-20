@@ -369,7 +369,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"><a
-																						href="#" target="mainFrame">员工信息</a>
+																						href="${pageContext.request.contextPath }/user_findAllUser" target="mainFrame">员工信息</a>
 																					</span>
 																				</td>
 																			</tr>
@@ -391,7 +391,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"> <a
-																						href="# " target="mainFrame">房屋信息</a>
+																						href="${pageContext.request.contextPath }/house_findAllHouse" target="mainFrame">房屋信息</a>
 																					</span>
 																				</td>
 																			</tr>
@@ -413,7 +413,7 @@ document.write("<div id=tt style=height:"+he+";overflow:hidden>")
 																					onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "
 																					onmouseout="this.style.borderStyle='none'">
 																					<span class="STYLE3"> <a
-																						href="#" target="mainFrame">房屋类型</a>
+																						href="${pageContext.request.contextPath }/houseType_findAllHouseType" target="mainFrame">房屋类型</a>
 																					</span>
 																				</td>
 																			</tr>

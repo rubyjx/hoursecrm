@@ -1,4 +1,9 @@
 package com.zxxz.crm.vo;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * 房屋类型的实体类
  *
@@ -20,7 +25,18 @@ public class HouseTypeInfo {
 	 */
 	private String houseTypeIsUsed;
 
+	/**
+	 * 定义一对多的外键约束
+	 */
+	private Set<HouseInfo> houseSet = new HashSet<HouseInfo>();
 
+	public Set<HouseInfo> getHouseSet() {
+		return houseSet;
+	}
+
+	public void setHouseSet(Set<HouseInfo> houseSet) {
+		this.houseSet = houseSet;
+	}
 
 	public int getHouseTypeId() {
 		return houseTypeId;
@@ -45,4 +61,5 @@ public class HouseTypeInfo {
 	public void setHouseTypeIsUsed(String houseTypeIsUsed) {
 		this.houseTypeIsUsed = houseTypeIsUsed;
 	}
+
 }

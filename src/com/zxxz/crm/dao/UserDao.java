@@ -38,5 +38,5 @@ public interface UserDao {
 	 * @param queryType
 	 * @return
 	 */
-	List<UserInfo> findUserByCondition(int pageIndex,int pageSize,String userName, String queryType);
+	List<UserInfo> findUserByCondition(String userName, String queryType);
 }

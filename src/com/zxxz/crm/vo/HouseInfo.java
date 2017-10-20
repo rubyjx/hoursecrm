@@ -50,7 +50,15 @@ public class HouseInfo {
 	 * 是否有效
 	 */
 	private String isUsed;
-
+	
+	/**
+     * 定义约束本类的外键信息
+     * @return
+     */
+	private HouseTypeInfo houseTypeInfo;
+	private UserInfo userInfo;
+	
+	
 	public int getHouseId() {
 		return houseId;
 	}
@@ -121,6 +129,30 @@ public class HouseInfo {
 
 	public void setIsUsed(String isUsed) {
 		this.isUsed = isUsed;
+	}
+
+	public HouseTypeInfo getHouseTypeInfo() {
+		return houseTypeInfo;
+	}
+
+	public void setHouseTypeInfo(HouseTypeInfo houseTypeInfo) {
+		this.houseTypeInfo = houseTypeInfo;
+	}
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+
+	@Override
+	public String toString() {
+		return "HouseInfo [houseId=" + houseId + ", typeId=" + typeId + ", typeName=" + typeName + ", userId=" + userId
+				+ ", userName=" + userName + ", houseAddress=" + houseAddress + ", housePrice=" + housePrice
+				+ ", houseAmbient=" + houseAmbient + ", isUsed=" + isUsed + ", houseTypeInfo=" + houseTypeInfo
+				+ ", userInfo=" + userInfo + "]";
 	}
 	
 

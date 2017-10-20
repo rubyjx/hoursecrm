@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-						http://www.springframework.org/schema/context 
-						http://www.springframework.org/schema/context/spring-context-3.0.xsd
-						http://www.springframework.org/schema/tx 
-						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-						http://www.springframework.org/schema/aop
-						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" >
 
+	
 
 	<!-- 配置数据源c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="user" value="root" />
 		<property name="password" value="123456" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/housecrm" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/managecrm" />
 	</bean>
 	<!-- 配置sessionFactory -->
 	<bean id="sessionFactory"
@@ -44,9 +42,9 @@
 
 
 	<!-- user业务层 -->
+	
 
-
-	<!-- 配置useraction -->
+	<!-- 配置userAction -->
 	<bean id="userAction" class="com.zxxz.crm.action.UserAction"
 		scope="prototype">
 		<!-- 依赖注入userService -->
@@ -58,7 +56,7 @@
 	<bean id="userService" class="com.zxxz.crm.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	<!-- 配置userbean -->
+	<!-- 配置userDao -->
 	<bean id="userDao" class="com.zxxz.crm.dao.impl.UserDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
@@ -78,7 +76,35 @@
 	<bean id="customerDao" class="com.zxxz.crm.dao.impl.CustomerDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
-
+	
+	<!-- 配置houseAction -->
+	<bean id="houseAction" class="com.zxxz.crm.action.HouseAction">
+		<property name="houseService" ref="houseService"></property>
+		<property name="houseTypeService" ref="houseTypeService"></property>
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 配置HouseService -->
+	<bean id="houseService" class="com.zxxz.crm.service.impl.HouseServiceImpl">
+		<property name="houseDao" ref="houseDao"></property>
+	</bean>
+	<!-- 配置HouseDao -->
+	<bean id="houseDao" class="com.zxxz.crm.dao.impl.HouseDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	<!-- 配置HouseTypeAction -->
+	<bean id="houseTypeAction" class="com.zxxz.crm.action.HouseTypeAction">
+		<property name="houseTypeService" ref="houseTypeService"></property>
+	</bean>
+	<!-- 配置hosueTypeService -->
+	<bean id="houseTypeService" class="com.zxxz.crm.service.impl.HouseTypeServiceImpl">
+		<property name="houseTypeDao" ref="houseTypeDao"></property>
+	</bean>
+	<!-- 配置houseTypeDao -->
+	<bean id="houseTypeDao" class="com.zxxz.crm.dao.impl.HouseTypeDaoImpe">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 
 	<!-- notice层 -->
 	<bean id="noticeAction" class="com.zxxz.crm.action.NoticeAction">
