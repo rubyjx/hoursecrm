@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	<script type="text/javascript">
 			alert('${info}');
-			window.location="<%=basePath%>servlet/DepartmentQueryServlet";
+			window.location="<%=basePath%>/department_findAllDepartment";
 			/*等同于超链接 <a>*/
 		</script>
   </head>

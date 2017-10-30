@@ -334,7 +334,7 @@ a {
 															onMouseOver="this.style.backgroundImage='url(${pageContext.request.contextPath}/resource/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "
 															onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
 															<div align="center" class="STYLE3">
-																<a href="#"
+																<a href="${pageContext.request.contextPath }/house_findAllHouse"
 																	target="mainFrame">房屋信息</a>
 															</div>
 														</td>

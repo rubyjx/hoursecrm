@@ -98,9 +98,9 @@ for(i=0;i<cs.length;i++){
   <body>
   
   <%
-						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userInfo2");
+						UserInfo  userInfo  =   (UserInfo)request.getSession().getAttribute("userinfo");
 			 %>
-  <form  action="<%=basePath%>servlet/DepartmentQueryServlet" method="post">
+  <form  action="<%=basePath%>/department_findAllDepartment" method="post">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	  <tr>
     <td height="30" background="<%=basePath%>resource/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -132,7 +132,7 @@ for(i=0;i<cs.length;i++){
             <td width="5%" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" style="width:5%; height: 22px;"><div align="center"><span class="STYLE1">序号</span></div></td>
            <td background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" style="width: 10%; height: 22px;"><div align="center"><span class="STYLE1">部门名称</span></div></td>
             <td background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" style="width: 75%; height: 22px;"><div align="center"><span class="STYLE1">部门描述</span></div></td>
-            <td    <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>  width="10%" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1" style="width: 9%; height: 22px;"><div align="center">基本操作</div></td>
+            <td    <%   if (!userInfo.getRoleId().equals("3") && !userInfo.getRoleId().equals("4")){%> style=" display: none  "  <%}%>  width="10%" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1" style="width: 9%; height: 22px;"><div align="center">基本操作</div></td>
           </tr>
           
           
@@ -148,7 +148,8 @@ for(i=0;i<cs.length;i++){
             </div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 10%"><div align="center"><span class="STYLE1"><%=de.getDepartmentName() %></span></div></td>
             <td height="20" bgcolor="#FFFFFF" style="width: 75%"><div align="center"><span class="STYLE1"><%=de.getDepartmentDesc() %></span></div></td>
-			<td   <%   if  (userInfo.getRolePower()  !=  3 &&  userInfo.getRolePower()  !=  4 ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF" style="width: 10%"><div align="center"><span class="STYLE4"><img src="<%=basePath%>resource/images/del.gif" width="16" height="16" /><a href="<%=basePath %>servlet/DepartmentDeleteServlet?id=<%=de.getDepartmentId()%>">删除</a></span></div></td>
+			<td   <%   if  (!userInfo.getRoleId().equals("3") && !userInfo.getRoleId().equals("4") ) {%> style=" display: none  "  <%}%>   height="20" bgcolor="#FFFFFF" style="width: 10%"><div align="center"><span class="STYLE4"><img src="<%=basePath%>resource/images/del.gif" width="16" height="16" />
+				<a href="<%=basePath %>/department_deleteDepartment?id=<%=de.getDepartmentId()%>">删除</a></span></div></td>
           </tr>
 		<%}}else{ %>
 		<tr>

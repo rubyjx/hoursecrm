@@ -105,6 +105,20 @@
 	<bean id="houseTypeDao" class="com.zxxz.crm.dao.impl.HouseTypeDaoImpe">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
+	
+	<!-- 配置departmentAction -->
+	<bean id="departmentAction" class="com.zxxz.crm.action.DepartmentAction">
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
+	<!-- 配置departmentService -->
+	<bean id="departmentService" class="com.zxxz.crm.service.impl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"></property>
+	</bean>
+	<!-- 配置departmentDao -->
+	<bean id="departmentDao" class="com.zxxz.crm.dao.impl.DepartmentDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
 
 	<!-- notice层 -->
 	<bean id="noticeAction" class="com.zxxz.crm.action.NoticeAction">
@@ -129,22 +143,12 @@
 	<bean id="customerSourceDao" class="com.zxxz.crm.dao.impl.CustomerSourceDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
-
 	<!-- 配置customerTypeDao -->
 	<bean id="customerTypeDao" class="com.zxxz.crm.dao.impl.CustomerTypeDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
-
-
-	<!-- 配置departmentDao -->
-	<bean id="departmentDao" class="com.zxxz.crm.dao.impl.DepartmentDaoImpl">
-		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
-	</bean>
-	<!-- 配置departmentService -->
-	<bean id="departmentService" class="com.zxxz.crm.service.impl.DepartmentServiceImpl">
-		<property name="departmentDao" ref="departmentDao"></property>
-	</bean>
-
+	
+	
 	<!-- 配置customerCareDao -->
 	<bean id="customerCareDao" class="com.zxxz.crm.dao.impl.CustomerCareDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>

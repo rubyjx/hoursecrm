@@ -59,7 +59,13 @@
 			<allowed-methods>findAllHouseType,deleteHouseType,addHouseType</allowed-methods>
 		</action>
 		
-		
+		<!-- 配置DepartmentAction信息 -->
+		<action name="department_*" class="departmentAction" method="{1}">
+			<result name="departmentList">/view/department/department_list.jsp</result>
+			<result name="departmentSave">/view/department/department_save.jsp</result>
+			<allowed-methods>findAllDepartment,deleteDepartment</allowed-methods>
+		</action>
+			
 		<action name="customercare_*" class="customerCareAction" method="{1}">
 			<result name="customercaremsg">/view/customerCare/customerCare_save.jsp</result>
 			<result name="customercarelist">/view/customerCare/customerCare_list.jsp</result>
